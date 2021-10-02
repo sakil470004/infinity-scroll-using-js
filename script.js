@@ -8,18 +8,20 @@ let photosArray = [];
 
 // Unsplash API
 //in inisial we load 3 photo for slow internet user.. leter we incress count into the 30
-let count = 3;
-const apiKey = 'pnEWWA-5ajEAzijVFcsZ0g9IT8ZFIbwvsJWbgvrX1b8';
-const apiUrl = `https://api.unsplash.com/photos/random?client_id=${apiKey}&count=${count}`;
+let count = [3,30];
+let apiKey = 'pnEWWA-5ajEAzijVFcsZ0g9IT8ZFIbwvsJWbgvrX1b8';
+let apiUrl = `https://api.unsplash.com/photos/random?client_id=${apiKey}&count=${count[0]}`;
 
 // Check if all images were loaded
 function imageLoaded() {
   imagesLoaded++;
-  if (imagesLoaded === totalImages) {
+   
+   if (imagesLoaded === totalImages) {
     ready = true;
     loader.hidden = true;
-    //here increase the photo count for better user exprence
-    count = 30;
+   
+     //here increase the photo count for better user exprence
+  apiUrl = `https://api.unsplash.com/photos/random?client_id=${apiKey}&count=${count[1]}`;
   }
 }
 
@@ -66,6 +68,8 @@ async function getPhotos() {
   } catch (error) {
     // Catch Error Here
   }
+  
+ 
 }
 
 // Check to see if scrolling near bottom of page, Load More Photos
